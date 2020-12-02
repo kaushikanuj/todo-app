@@ -1,1 +1,1 @@
-web: gunicorn razor.wsgi --log-file
+web: gunicorn razor.wsgi --log-file-
