@@ -1,0 +1,17 @@
+{% extends 'todo/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="container">
+        <h1 class="text-center">Update Item</h1>
+        <div class="row mt-5">
+            <div class="col-md-4 m-auto">
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    {{ form|crispy }}<br>
+                    <button type="submit" class="btn btn-primary">Update</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

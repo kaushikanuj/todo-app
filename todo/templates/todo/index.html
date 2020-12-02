@@ -1,0 +1,50 @@
+{% extends 'todo/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="container">
+        <div class="row mt-4">
+            <div class="col-md-4">
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    <br>
+                    <input type="submit" class="btn bg-primary text-white">
+                </form>
+            </div>
+            <div class="col-md-8">
+                <table class="table">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">id</th>
+                        <th scope="col">First Name</th>
+                        <th scope="col">Last Name</th>
+                        <th scope="col">Roll No</th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for data in data %}
+                        <tr>
+                            <th scope="row">{{ data.id }}</th>
+                            <td>{{ data.first_name }}</td>
+                            <td>{{ data.last_name }}</td>
+                            <td>{{ data.roll_no }}</td>
+                            <td>
+                                <button type="button" class="btn bg-primary">
+                                    <a class="text-white" href="{% url 'update' data.id %}">Update</a>
+                                </button>
+                            </td>
+                            <td>
+                                <button type="button" class="btn bg-danger">
+                                    <a class="text-white" href="{% url 'delete' data.id %}">Delete</a>
+                                </button>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}
